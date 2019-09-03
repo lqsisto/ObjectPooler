@@ -27,15 +27,6 @@ public class ObjectPooler : MonoBehaviour
     
     private void Awake ()
     {
-        if (instance == false)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy (this);
-        }
-        
         objectHolder = GameObject.Find ("ObjectHolder");
         for(int i = 0; i < powerUpObjects.Length; i++)
         {
