@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class ObjectPooler : MonoBehaviour
 {
-    [SerializeField] private static GameObject objectHolder;
+    private static GameObject objectHolder;
     
     //prefab array
     [SerializeField] private Transform[] powerUpPrefabs;
@@ -28,7 +28,8 @@ public class ObjectPooler : MonoBehaviour
     private void Awake ()
     {
         objectHolder = GameObject.Find ("ObjectHolder");
-        for(int i = 0; i < powerUpObjects.Length; i++)
+        
+        for(var i = 0; i < powerUpObjects.Length; i++)
         {
             powerUp = new PowerUp ();
             PoolDict.Add (powerUpPrefabs[i], powerUp.CreatePool (poolSize, powerUpPrefabs[i]));
@@ -63,7 +64,7 @@ public class ObjectPooler : MonoBehaviour
         return PoolDict[objects[random]];
     }
 
-    [System.Serializable]
+    [Serializable]
     public class PowerUp
     {
         public string name;
